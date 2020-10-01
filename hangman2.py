@@ -5,8 +5,6 @@ Created on Fri Feb 10 14:17:13 2017
 @author: satyam
 """
 # Hangman game
-#
-
 # -----------------------------------
 # Helper code
 # You don't need to understand this helper code,
@@ -47,7 +45,6 @@ def chooseWord(wordlist):
 
 # end of helper code
 # -----------------------------------
-
 # Load the list of words into the variable wordlist
 # so that it can be accessed from anywhere in the program
 wordlist = loadWords()
@@ -55,19 +52,19 @@ wordlist = loadWords()
 def isWordGuessed(secretWord, lettersGuessed):
     '''
     secretWord: string, the word the user is guessing
-    lettersGuessed: list, what letters have been guessed so far
-    returns: boolean, True if all the letters of secretWord are in lettersGuessed;
-      False otherwise
+    lettersGuessed: list, what letters have been guessed so far.....
+    returns: boolean, return True if all the letters of secretWord are in lettersGuessed;
+      otherwise False
     '''
     b=[]
     for i in lettersGuessed:
              if i in secretWord:
-                    b=b+[i,]
-    sortedlettersGuessed=sorted(b)
+                    b = b+[i,]
+    sortedlettersGuessed = sorted(b)
 
-    sortedSecretWord=sorted(secretWord)
+    sortedSecretWord = sorted(secretWord)
 
-    if sortedSecretWord==sortedlettersGuessed:
+    if sortedSecretWord == sortedlettersGuessed:
        a=True
     else:
        a=False
@@ -77,8 +74,8 @@ def isWordGuessed(secretWord, lettersGuessed):
 
 def getGuessedWord(secretWord, lettersGuessed):
     '''
-    secretWord: string, the word the user is guessing
-    lettersGuessed: list, what letters have been guessed so far
+    secretWord: string, the word that user is guessing
+    lettersGuessed: list, what letters have been guessed so far.....
     returns: string, comprised of letters and underscores that represents
       what letters in secretWord have been guessed so far.
     '''
@@ -94,15 +91,15 @@ def getGuessedWord(secretWord, lettersGuessed):
 alphabet=string.ascii_lowercase
 def getAvailableLetters(lettersGuessed):
     '''
-    lettersGuessed: list, what letters have been guessed so far
+    lettersGuessed: list, what letters have been guessed so far.....
     returns: string, comprised of letters that represents what letters have not
       yet been guessed.
     '''
     
-    newAlphabet=""
+    newAlphabet = ""
     for i in alphabet:
         if i not in lettersGuessed:
-            newAlphabet=newAlphabet+i
+            newAlphabet = newAlphabet+i
     return newAlphabet
 
 
@@ -126,7 +123,7 @@ def hangman(secretWord):
 
     Follows the other limitations detailed in the problem write-up.
     '''
-    p=" _"
+    p = " _"
     numGuesses=8
     lettersGuessed=[]
     lengthSecretWord=len(secretWord)
@@ -139,23 +136,23 @@ def hangman(secretWord):
     
        print("You have "+str(numGuesses)+" guesses left.")
        print("Available letters: "+str(getAvailableLetters(lettersGuessed)))
-       letterGuessed =input("Please guess a letter: ")
-       lowerletterGuessed=letterGuessed.lower()
-       lettersGuessed=lettersGuessed+[lowerletterGuessed,]
+       letterGuessed = input("Guess a letter: ")
+       lowerletterGuessed = letterGuessed.lower()
+       lettersGuessed = lettersGuessed+[lowerletterGuessed,]
        
 
        if letterGuessed in secretWord:
            print("Good guess: "+str(getGuessedWord(secretWord, lettersGuessed)))
            if isWordGuessed(secretWord,lettersGuessed):
-               print("Congratulations, you won!")
+               print("Congratulations, you won! the Game, Well played....")
                break
           
            
        else:
           numGuesses=numGuesses-1
-          print("Oops! That letter is not in my word: "+str(getGuessedWord(secretWord, lettersGuessed)))
+          print("Oops! That letter is not in word: "+str(getGuessedWord(secretWord, lettersGuessed)))
           if numGuesses==0:
-                  print("Sorry, you ran out of guesses. The word was "+str(secretWord))
+                  print("Sorry, you ran out of number of guesses. The word was "+str(secretWord))
                   break
        
 
